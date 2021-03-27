@@ -1,4 +1,5 @@
 import * as Tone from 'tone'
+import css from '../css/index.scss'
 
 const synth = new Tone.Synth().toDestination();
 const now = Tone.now()

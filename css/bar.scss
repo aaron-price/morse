@@ -1,0 +1,101 @@
+$unit-width:  1rem;
+
+$bar-height: 3 * $unit-width;
+$dot-height: $unit-width / 2;
+$dot-top: ($bar-height / 2) - ($dot-height / 2);
+$dot-left: ($unit-width / 2) - ($dot-height / 2);
+$dash-width: $dot-height * 4;
+$dash-left: ($unit-width * (3 / 2)) - ($dash-width / 2);
+
+$down-col: #444;
+$up-col: #DDD;
+$border-col: #4D3;
+
+  
+
+@function unit-width($units) { @return $units * $unit-width; }
+
+.morse-code-bar {
+    &.-outer {
+        background-color: #DDD;
+        width: 90vw;
+        height: $bar-height * 2;
+        overflow: hidden;
+    }
+    &.-inner {
+        //transform: translateX(50px);
+        height: $bar-height;
+        width: max-content;
+    }
+    &.-plain {
+        display: inline-block;
+        height: $bar-height;
+        .-charspace {
+            display: inline-block;
+            width: unit-width(1);
+            height: $bar-height;
+            margin-right: 1px;
+        }
+        .-wordspace {
+            display: inline-block;
+            margin-right: 1px;
+            width: unit-width(6);
+            height: $bar-height;
+        }
+        .-letter {
+            display: inline-block;
+            height: $bar-height;
+            font-size: 1.5rem;
+            position: relative;
+            top: -1rem;
+            text-align: center;
+            
+        }
+    }
+    &.-unit {
+        display: inline-block;
+        height: $bar-height;
+        margin-right: 1px;
+        &.-dot {
+            width: unit-width(1);
+            background-color: $down-col;
+            clear: both;
+            color: $up-col;
+            .-content {
+                width: $dot-height;
+                height: $dot-height;
+                background-color: $up-col;
+                border-radius: $dot-height / 2;
+                position: relative;
+                top: $dot-top;
+                left: $dot-left;
+            }
+        }
+        &.-dash {
+            width: unit-width(3);
+            background-color: $down-col;
+            color: $up-col;
+            border-color: $up-col;
+            .-content {
+                width: $dash-width;
+                height: $dot-height;
+                background-color: $up-col;
+                border-radius: $dot-height / 4;
+                position: relative;
+                top: $dot-top;
+                left: $dash-left;
+            }
+        }
+        &.-charspace {
+            visibility: hidden; 
+            width: unit-width(1);
+            background-color: $up-col;
+        }
+        &.-wordspace {
+            visibility: hidden; 
+            width: unit-width(7);
+            border-color: $down-col;
+            background-color: $up-col;
+        }
+    }
+}

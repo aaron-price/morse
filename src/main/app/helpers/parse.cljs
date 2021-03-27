@@ -6,6 +6,8 @@
     [app.db :refer [chart]]
   ))
 
+(def inv-chart (clojure.set/map-invert chart))
+
 ;;;; SPECS ;;;;
 ;;;; Morse code ;;;;
 (s/def ::loose-morse-sym  
@@ -42,11 +44,18 @@
 (s/def ::plain-text plain-text?)
 (s/def ::plain-text-loose string?)
 (s/def ::spaced-plain (s/coll-of ::plain-char))
+(s/def ::char avail-chars)
+(s/def ::count integer?)
+(s/def ::num-syms integer?)
+(s/def ::counted-char (s/keys :req-un [::char ::count ::num-syms]))
+(s/def ::counted-plain (s/coll-of ::counted-char))
 
 (s/valid? ::plain-char "A")
 (s/valid? ::plain-text "HELLO WORLD")
 (s/valid? ::plain-text-loose "AfadfFGzcxv.,")
 (s/valid? ::spaced-plain ["H" "I"   " "   "T" "H" "E" "R" "E"])
+
+
 
 
 (defn get-duration [unit t1 t2]
@@ -86,7 +95,10 @@
         (rest l))))))
 
 
+; You are probably looking for parse-spaces/1 instead
 (defn- get-spaced-code [morse-code]
+  {:pre [(s/valid? ::morse-code morse-code)]
+   :post [(s/valid? (s/keys :req-un [::resolved ::pending]) %)]}
   (reduce
     (fn [{:keys [resolved pending] :as acc} sym]
       (match sym
@@ -115,8 +127,7 @@
 (defn spaced-code->spaced-plain [spaced-code]
   {:pre [(s/valid? ::spaced-code spaced-code)]
    :post [(s/valid? ::spaced-plain %)]}
-  (let [inv-chart (clojure.set/map-invert chart)]
-    (map inv-chart spaced-code)))
+  (map inv-chart spaced-code))
 
 
 (defn log->plain [unit log]
@@ -150,11 +161,72 @@
 
 (defn plain->code [plain]
   {:pre [(s/valid? ::plain-text-loose plain)]
-   ;:post [(s/explain ::morse-code %)]
+   :post [(s/valid? ::morse-code %)]
    }
   (let [plain-chars (clojure.string/split plain #"")
         strict-chars (filter avail-chars plain-chars)
         morse-chars (plain-chars->morse-code strict-chars)
-  ]
-    (prn morse-chars)
-    morse-chars))
+  ] morse-chars))
+
+(defn code->plain [code]
+  {:pre  [(s/valid? ::morse-code code)]
+   :post [(s/valid? ::plain-text %)]}
+  (->> code
+       parse-spaces
+       spaced-code->spaced-plain
+       (clojure.string/join "")))
+
+(defn count-sym [sym]
+  {:pre [(s/valid? ::morse-sym sym)]
+   :post [(s/valid? integer? %)]}
+  (match sym
+         "." 1
+         "-" 3
+         "charspace" 3
+         "wordspace" 7))
+
+(defn count-code [code]
+  {:pre [(s/valid? ::morse-code code)]
+   :post [(s/valid? integer? %)]}
+  (reduce
+    (fn [acc sym] (+ acc (count-sym sym)))
+    0
+    code))
+
+(defn code->counted-plain [code]
+  {:pre [(s/valid? ::morse-code code)]
+   :post [(s/valid? ::counted-plain %)]}
+  (let [space (parse-spaces code)
+        cplain (map
+                 (fn [char-code]
+                   {:char (get inv-chart char-code)
+                    :num-syms (count char-code)
+                    :count (count-code char-code)})
+                 space)]
+  cplain))
+;
+;(defn count-sym [sym]
+;  {:pre [(s/explain ::morse-sym sym)]
+;   :post [(s/valid? integer? %)]}
+;  (match sym
+;         "." 1
+;         "-" 3
+;         "charspace" 3
+;         "wordspace" 7))
+;
+;
+;(defn- count-units [code]
+;  ;@TODO
+;  {:pre [(s/valid? ::morse-code code)]
+;   :post [(s/valid? ::counted-char %)]}
+;  (reduce
+;    (fn [{n :count ch :char} sym] (+ n (count-sym code)))
+;    {:count 0 :char (code->plain-char code)}
+;    code)
+;  {:count 1 :char "E"})
+;
+;
+;(defn code->counted-plain [code]
+;  {:pre [(s/valid? ::morse-code code)]
+;   :post [(s/valid? ::counted-plain %)]}
+;  (let [space-code (get-spaced-code)]))

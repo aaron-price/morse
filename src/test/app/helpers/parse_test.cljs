@@ -52,4 +52,15 @@
   (is (= (p/plain->code "AT E.")
          ["." "-" "charspace" "-" "wordspace" "."])))
 
+(deftest code->plain
+  (is (= (p/code->plain ["." "-" "charspace" "-" "wordspace" "."])
+         "AT E")))
 
+(deftest plain-counting
+  (is (= (p/code->counted-plain ["." "-" "charspace" "-" "wordspace" "."])
+         [
+           {:count 4 :char "A" :num-syms 2}
+           {:count 3 :char "T" :num-syms 1}
+           {:count 7 :char " " :num-syms 1}
+           {:count 1 :char "E" :num-syms 1}
+         ])))
