@@ -51,5 +51,6 @@
   {:log []
    :unit 200
    :score 0
+   :challenge {:text "" :curr-code [] :state :waiting :index 0}
    :input-text ""
    :ticker ticker})

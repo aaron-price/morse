@@ -1,8 +1,10 @@
 (ns app.component.bar
   (:require
+    [cljs.spec.alpha :as s]
+    ;[app.helpers.interop :refer [get-node]]
     [re-frame.core :refer [dispatch subscribe]]
     ;[app.helpers.parser :refer [morse-text->flat-morse-text]]
-    [app.helpers.parse :refer [code->counted-plain]]
+    [app.helpers.parse :refer [code->counted-plain] :as p]
     [garden.core :refer [css]]
     [defun.core :refer [fun defun]]
     [cljs.core.match :refer [match]]
@@ -10,11 +12,8 @@
 
 (def unit-width 1)
 
-
-(defn add-slice [slice]
-  (if slice
-    (str "translateX(" (* -1 unit-width slice) "rem)")))
-
+(defn add-slice []
+  (str "translateX(" (* -1 @(subscribe [:log-size])) "rem)"))
 
 (defun get-unit 
   ([i "."]
@@ -41,32 +40,45 @@
                  [:div.-charspace [:div.-content]]])])
 
 
-(defn code-bar [code {slice :slice}]
-  [:div.morse-code-bar.-inner
-    {:style {:transform (add-slice slice)}}
-    (map-indexed get-unit code)])
+(defn code-bar [code {id :id}]
+  (let [
+    attr {:style {:transform (add-slice)
+          :transition-duration "200ms"}}
+    attr (if id (assoc attr :id id) attr)]
+  [:div.morse-code-bar.-inner attr
+    (map-indexed get-unit code)]))
 
-(defn plain-bar [code {slice :slice}]
+
+(defn plain-bar [code {}]
   (let [counted-plain (code->counted-plain code)]
-    (prn counted-plain)
     [:div.morse-code-bar.-inner
-      {:style {:transform (add-slice slice)}}
+      {:style {:transform (add-slice)
+               :transition-duration "200ms"}}
       (map-indexed
         get-plain
-        ;(fn [i {ch :char width :count margin :num-sym}]
-        ;  [:<> {:key i}
-        ;    (match ch
-        ;           " " [:div.morse-code-bar.-plain.-wordspace
-        ;                 {:style {:margin-right margin}}]
-        ;           _ [:div.morse-code-bar.-plain.-letter
-        ;               {:style {:width (str width "rem")
-        ;                        :margin-right margin}} ch])
-        ;    [:div.morse-code-bar.-plain.-charspace]
-        ;  ])
-        counted-plain)
-    ]))
+        counted-plain)]))
 
+
+(s/def ::bar-opts (s/keys :opt-un [
+                                   ::hide-plain? 
+                                   ::hide-code?]))
 (defn morse-code-bar [code opts]
-  [:div.morse-code-bar.-outer
-    [plain-bar code opts]
-    [code-bar code opts]])
+  {:pre [(s/valid? ::p/morse-code code) 
+         (s/valid? ::bar-opts opts)]}
+  (let [{:keys [hide-plain? hide-code? id
+                hide-log-plain? hide-log-code?] 
+         ;:or   {hide-plain? false hide-code? false}
+         } opts
+        code-hidden? (if id hide-log-code? hide-code?)
+        plain-hidden? (if id hide-log-plain? hide-plain?)
+        num-bars (reduce
+                   #(if-not %2 (inc %1) %1)
+                   0
+                   [hide-code? hide-plain?])
+        bar-height (str (* 3 num-bars) "rem")
+
+        outer-attrs {:style {:height bar-height}}]
+
+  [:div.morse-code-bar.-outer outer-attrs
+    (if-not plain-hidden? [plain-bar code opts])
+    (if-not code-hidden?  [code-bar code opts])]))

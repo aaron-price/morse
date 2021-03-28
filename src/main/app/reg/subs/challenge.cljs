@@ -3,6 +3,8 @@
     [re-frame.core :refer [reg-sub]]))
 
 (reg-sub :challenge (fn [db [_ subfield]] 
-                      (get-in db [:challenge subfield])))
+                      (if subfield
+                        (get-in db [:challenge subfield])
+                        (:challenge db))))
 
 

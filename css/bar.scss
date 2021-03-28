@@ -17,15 +17,17 @@ $border-col: #4D3;
 
 .morse-code-bar {
     &.-outer {
-        background-color: #DDD;
+        //background-color: #DDD;
         width: 90vw;
         height: $bar-height * 2;
         overflow: hidden;
     }
     &.-inner {
         //transform: translateX(50px);
+        //transition-duration: 1s; 
         height: $bar-height;
         width: max-content;
+        background-color: $up-col;
     }
     &.-plain {
         display: inline-block;
@@ -35,12 +37,14 @@ $border-col: #4D3;
             width: unit-width(1);
             height: $bar-height;
             margin-right: 1px;
+            background-color: $up-col;
         }
         .-wordspace {
             display: inline-block;
             margin-right: 1px;
             width: unit-width(6);
             height: $bar-height;
+            background-color: $up-col;
         }
         .-letter {
             display: inline-block;

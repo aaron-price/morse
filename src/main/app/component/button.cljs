@@ -5,6 +5,10 @@
 
 (defn default-btn []
   [:div.button-parent
-    [:button#btn {:on-mouse-down #(dispatch [:tap-down])
-                  :on-mouse-up   #(dispatch [:tap-up])} 
-     "TAP"]])
+    [:button#btn.basic 
+      {:on-mouse-down #(dispatch [:tap-down])
+       :on-mouse-up   #(dispatch [:tap-up])} 
+     "TAP HERE"]])
+
+(defn reset-log []
+  [:button {:on-mouse-up #(dispatch [:reset-log])} "Reset"])

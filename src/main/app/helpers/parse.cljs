@@ -6,6 +6,7 @@
     [app.db :refer [chart]]
   ))
 
+; @TODO handle when the chart lookup can't find any match.
 (def inv-chart (clojure.set/map-invert chart))
 
 ;;;; SPECS ;;;;
@@ -203,30 +204,4 @@
                     :num-syms (count char-code)
                     :count (count-code char-code)})
                  space)]
-  cplain))
-;
-;(defn count-sym [sym]
-;  {:pre [(s/explain ::morse-sym sym)]
-;   :post [(s/valid? integer? %)]}
-;  (match sym
-;         "." 1
-;         "-" 3
-;         "charspace" 3
-;         "wordspace" 7))
-;
-;
-;(defn- count-units [code]
-;  ;@TODO
-;  {:pre [(s/valid? ::morse-code code)]
-;   :post [(s/valid? ::counted-char %)]}
-;  (reduce
-;    (fn [{n :count ch :char} sym] (+ n (count-sym code)))
-;    {:count 0 :char (code->plain-char code)}
-;    code)
-;  {:count 1 :char "E"})
-;
-;
-;(defn code->counted-plain [code]
-;  {:pre [(s/valid? ::morse-code code)]
-;   :post [(s/valid? ::counted-plain %)]}
-;  (let [space-code (get-spaced-code)]))
+    cplain))

@@ -2,28 +2,33 @@
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
             [app.helpers.interop :refer [get-node]]
-            [cljs.core.match :refer [match]]
+            [reitit.frontend :as ri]
+            [reitit.frontend.easy :as rie]
+            [reitit.coercion.spec :as rss]
+            ;[cljs.core.match :refer [match]]
             [reagent.dom :as rd]
             [app.helpers.parse]
             [app.reg.all]
+            [app.component.page.learn.lesson1 :as lesson1]
             [app.component.root :as root]))
 
 
-(defn router [endpoint]
-  (match endpoint
-         "/" root/root
-         "/sandbox" root/sandbox
-         ;"/learn" root/learn
-         "/tap" root/tap
-         "/challenges" root/challenges
-         "/listen" root/listen))
+(def routes
+  [
+    ["/" {:name ::index :view root/root}] 
+    ["/learn/lesson1" {:name ::lesson1 
+                       :view lesson1/page}]
+  ])
 
+(def router (ri/router routes))
 
 (defn init []
-  ; Due to re-frame-10x, we must do this twice
-  ; OR do it async
-  ; Which seems even more troublesome
-  (rf/dispatch-sync [:initialize])
-  (rf/dispatch-sync [:initialize])
-  (rd/render [(router (.. js/window -location -pathname))]
-             (get-node "root")))
+  (let [path (.. js/window -location -pathname)
+        route (ri/match-by-path router path)
+        view (get-in route [:data :view])
+        node (get-node "root")]
+
+    (rf/dispatch-sync [:initialize route])
+    (rf/dispatch-sync [:initialize route])
+    
+    (rd/render view node)))

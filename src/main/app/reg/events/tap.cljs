@@ -24,4 +24,5 @@
     (. js/window stop_tone)
     {:fx [[:dispatch [:put-log (entry :up)]]
           [:dispatch [:start-ticker]]
+          [:dispatch [:check-work]]
          ]}))

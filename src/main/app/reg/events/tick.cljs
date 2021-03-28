@@ -34,7 +34,9 @@
   (fn-traced 
     [cofx _]
     (let [ticker (blank-ticker)
-          db (assoc (:db cofx) :ticker ticker)]
+          db (-> (:db cofx)
+                 (assoc :ticker ticker)
+                 (assoc-in [:challenge :state] :running))]
     {:db db
      :dispatch-interval {:dispatch [:tick]
                          :id :ticker

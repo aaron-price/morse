@@ -5,6 +5,7 @@
     [app.reg.events.challenge]
     [app.reg.events.initialize]
     [app.reg.events.put-log]
+    [app.reg.events.reset-log]
     [app.reg.events.tap]
     [app.reg.events.tick]
     [app.reg.events.text-input]
@@ -14,4 +15,5 @@
     [app.reg.subs.log-morse-code]
     [app.reg.subs.text-output]
     [app.reg.subs.unit]
+    [app.reg.subs.ticker]
   ))

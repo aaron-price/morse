@@ -10,7 +10,7 @@ try {require('source-map-support').install();} catch (e) {console.warn('no "sour
 
 global.CLOSURE_NO_DEPS = true;
 
-global.CLOSURE_DEFINES = {"shadow.cljs.devtools.client.env.repl_pprint":false,"shadow.cljs.devtools.client.env.reload_strategy":"optimized","shadow.cljs.devtools.client.env.devtools_url":"","shadow.cljs.devtools.client.env.autoload":true,"shadow.cljs.devtools.client.env.proc_id":"f2082c88-3c19-4014-80eb-8bf9d8d2b6a8","shadow.cljs.devtools.client.env.use_document_protocol":false,"goog.ENABLE_DEBUG_LOADER":false,"shadow.cljs.devtools.client.env.server_port":9630,"shadow.cljs.devtools.client.env.server_token":"e705cfb4-d69c-43d5-979f-e73e3bb80ab4","shadow.cljs.devtools.client.env.use_document_host":true,"shadow.cljs.devtools.client.env.module_format":"goog","goog.LOCALE":"en","shadow.cljs.devtools.client.env.build_id":"test","shadow.cljs.devtools.client.env.ignore_warnings":false,"goog.DEBUG":true,"cljs.core._STAR_target_STAR_":"nodejs","shadow.cljs.devtools.client.env.log":true,"shadow.cljs.devtools.client.env.ssl":false,"shadow.cljs.devtools.client.env.enabled":true,"shadow.cljs.devtools.client.env.server_host":"localhost","shadow.cljs.devtools.client.env.worker_client_id":13,"goog.TRANSPILE":"never"};
+global.CLOSURE_DEFINES = {"shadow.cljs.devtools.client.env.repl_pprint":false,"shadow.cljs.devtools.client.env.reload_strategy":"optimized","shadow.cljs.devtools.client.env.devtools_url":"","shadow.cljs.devtools.client.env.autoload":true,"shadow.cljs.devtools.client.env.proc_id":"68031a18-34a6-4942-a6b2-35547f069bce","shadow.cljs.devtools.client.env.use_document_protocol":false,"goog.ENABLE_DEBUG_LOADER":false,"shadow.cljs.devtools.client.env.server_port":9630,"shadow.cljs.devtools.client.env.server_token":"f993a81e-821e-420f-9524-162199c1b961","shadow.cljs.devtools.client.env.use_document_host":true,"shadow.cljs.devtools.client.env.module_format":"goog","goog.LOCALE":"en","shadow.cljs.devtools.client.env.build_id":"test","shadow.cljs.devtools.client.env.ignore_warnings":false,"goog.DEBUG":true,"cljs.core._STAR_target_STAR_":"nodejs","shadow.cljs.devtools.client.env.log":true,"shadow.cljs.devtools.client.env.ssl":false,"shadow.cljs.devtools.client.env.enabled":true,"shadow.cljs.devtools.client.env.server_host":"localhost","shadow.cljs.devtools.client.env.worker_client_id":185,"goog.TRANSPILE":"never"};
 
 var goog = global.goog = {};
 
@@ -1698,6 +1698,47 @@ SHADOW_IMPORT("app.helpers.predict.js");
 SHADOW_IMPORT("app.helpers.predict_test.js");
 SHADOW_IMPORT("app.helpers.singer.js");
 SHADOW_IMPORT("app.helpers.sing_test.js");
+SHADOW_IMPORT("day8.re_frame.tracing.js");
+SHADOW_IMPORT("goog.debug.entrypointregistry.js");
+SHADOW_IMPORT("goog.labs.useragent.engine.js");
+SHADOW_IMPORT("goog.labs.useragent.platform.js");
+SHADOW_IMPORT("goog.useragent.useragent.js");
+SHADOW_IMPORT("goog.dom.browserfeature.js");
+SHADOW_IMPORT("goog.math.coordinate.js");
+SHADOW_IMPORT("goog.math.size.js");
+SHADOW_IMPORT("goog.dom.dom.js");
+SHADOW_IMPORT("goog.async.nexttick.js");
+SHADOW_IMPORT("goog.debug.errorcontext.js");
+SHADOW_IMPORT("goog.debug.debug.js");
+SHADOW_IMPORT("goog.events.browserfeature.js");
+SHADOW_IMPORT("goog.disposable.idisposable.js");
+SHADOW_IMPORT("goog.disposable.disposable.js");
+SHADOW_IMPORT("goog.events.eventid.js");
+SHADOW_IMPORT("goog.events.event.js");
+SHADOW_IMPORT("goog.events.eventtype.js");
+SHADOW_IMPORT("goog.events.browserevent.js");
+SHADOW_IMPORT("goog.events.listenable.js");
+SHADOW_IMPORT("goog.events.listener.js");
+SHADOW_IMPORT("goog.events.listenermap.js");
+SHADOW_IMPORT("goog.events.events.js");
+SHADOW_IMPORT("re_frame.interop.js");
+SHADOW_IMPORT("re_frame.db.js");
+SHADOW_IMPORT("re_frame.loggers.js");
+SHADOW_IMPORT("re_frame.utils.js");
+SHADOW_IMPORT("re_frame.settings.js");
+SHADOW_IMPORT("re_frame.registrar.js");
+SHADOW_IMPORT("re_frame.trace.js");
+SHADOW_IMPORT("re_frame.interceptor.js");
+SHADOW_IMPORT("re_frame.events.js");
+SHADOW_IMPORT("re_frame.subs.js");
+SHADOW_IMPORT("re_frame.router.js");
+SHADOW_IMPORT("re_frame.fx.js");
+SHADOW_IMPORT("re_frame.cofx.js");
+SHADOW_IMPORT("clojure.data.js");
+SHADOW_IMPORT("re_frame.std_interceptors.js");
+SHADOW_IMPORT("re_frame.core.js");
+SHADOW_IMPORT("app.reg.events.challenge.js");
+SHADOW_IMPORT("app.reg.events.challenge_test.js");
 SHADOW_IMPORT("shadow.test.js");
 SHADOW_IMPORT("shadow.test.node.js");
 SHADOW_IMPORT("shadow.module.main.append.js");
