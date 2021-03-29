@@ -6,7 +6,7 @@
 
 (defn default-btn []
   [:div.button-parent "Tap Below"
-    [:button#btn.basic 
+    [:div#btn.basic 
       {:on-pointer-down (fn [e]
                           (.preventDefault e)
                           (dispatch [:tap-down]))

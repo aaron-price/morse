@@ -1,6 +1,6 @@
 goog.provide('app.component.button');
 app.component.button.default_btn = (function app$component$button$default_btn(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.button-parent","div.button-parent",-1870329860),"Tap Below",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button#btn.basic","button#btn.basic",308958619),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-pointer-down","on-pointer-down",573334138),(function (e){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.button-parent","div.button-parent",-1870329860),"Tap Below",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div#btn.basic","div#btn.basic",1811546967),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-pointer-down","on-pointer-down",573334138),(function (e){
 e.preventDefault();
 
 return re_frame.core.dispatch(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tap-down","tap-down",-2100577571)], null));
