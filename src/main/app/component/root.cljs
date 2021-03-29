@@ -4,7 +4,7 @@
   ))
 
 (defn root []
-  [:div "Welcome"
+  [:div "Welcome. This is a work in progress."
     [:div [:a {:href "/learn/lesson1"} "Lesson 1: Getting started"]]
   ])
 ;
