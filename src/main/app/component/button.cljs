@@ -5,7 +5,7 @@
 
 
 (defn default-btn []
-  [:div.button-parent
+  [:div.button-parent "Tap Below"
     [:button#btn.basic 
       {:on-pointer-down (fn [e]
                           (.preventDefault e)
@@ -13,7 +13,7 @@
        :on-pointer-up   (fn [e]
                           (.preventDefault e)
                           (dispatch [:tap-up]))} 
-     "TAP HERE"]])
+     ]])
 
 (defn reset-log []
   [:button {:on-pointer-up (fn [e]

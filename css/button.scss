@@ -1,9 +1,19 @@
-button {
-    &.basic {
-        width: 12rem;
-        height: 4rem;
-        background-color: #444;
-        color: #DDD;
-        cursor: pointer;
+.button-parent {
+    
+    button {
+        &.basic {
+            display: block;
+            width: 12rem;
+            height: 4rem;
+            background-color: #888;
+            color: #DDD;
+            &:hover {
+                background-color: #555;
+            }
+            &:focus {
+                background-color: #333;
+            }
+            cursor: pointer;
+        }
     }
 }

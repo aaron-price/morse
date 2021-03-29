@@ -23,12 +23,12 @@ re_frame.core.dispatch_sync(new cljs.core.PersistentVector(null, 2, 5, cljs.core
 return (function (){
 var log_code = cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"predict->morse-code","predict->morse-code",1333669763)], null)));
 var db_challenge = cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"challenge","challenge",1302148691)], null)));
-var map__34847 = db_challenge;
-var map__34847__$1 = (((((!((map__34847 == null))))?(((((map__34847.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__34847.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__34847):map__34847);
-var state = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__34847__$1,new cljs.core.Keyword(null,"state","state",-1988618099));
-var index = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__34847__$1,new cljs.core.Keyword(null,"index","index",-1531685915));
-var challenge_specs = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__34847__$1,new cljs.core.Keyword(null,"challenge-specs","challenge-specs",1094085111));
-var curr_code = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__34847__$1,new cljs.core.Keyword(null,"curr-code","curr-code",905590378));
+var map__38733 = db_challenge;
+var map__38733__$1 = (((((!((map__38733 == null))))?(((((map__38733.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38733.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38733):map__38733);
+var state = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38733__$1,new cljs.core.Keyword(null,"state","state",-1988618099));
+var index = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38733__$1,new cljs.core.Keyword(null,"index","index",-1531685915));
+var challenge_specs = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38733__$1,new cljs.core.Keyword(null,"challenge-specs","challenge-specs",1094085111));
+var curr_code = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38733__$1,new cljs.core.Keyword(null,"curr-code","curr-code",905590378));
 var spec = app.component.challenge.safe_nth(challenge_specs,index);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(state,new cljs.core.Keyword(null,"completed","completed",-486056503))){
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [app.component.challenge.render_victory,spec,curr_code,log_code], null);
