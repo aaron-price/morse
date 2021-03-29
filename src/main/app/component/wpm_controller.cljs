@@ -15,5 +15,9 @@
         dec-evt #(dispatch [:dec-wpm])]
       [:div.wpm.wrapper
         [:div.text "WPM: " wpm]
-        [:button.inc {:disabled disabled? :on-click inc-evt} "+"]
-        [:button.dec {:disabled disabled? :on-click dec-evt} "-"]]))
+        [:button.inc {:disabled disabled? :on-click (fn [e]
+                                                      (.preventDefault e)
+                                                      (inc-evt))} "+"]
+        [:button.dec {:disabled disabled? :on-click (fn [e]
+                                                      (.preventDefault e)
+                                                      (dec-evt))} "-"]]))
