@@ -12,6 +12,7 @@
 (defn render-challenge [spec chal-code log-code]
   [:<>
     [:h3 (:note spec)]
+    [:p @(subscribe [:count-log])]
     [morse-code-bar chal-code spec]
     [:hr]
     [render-btn]
