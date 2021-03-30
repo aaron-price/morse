@@ -11,6 +11,7 @@
     [app.reg.events.text-input]
     [app.reg.events.wpm]
 
+    [app.reg.subs.btn-type]
     [app.reg.subs.challenge]
     [app.reg.subs.log-morse-code]
     [app.reg.subs.text-output]

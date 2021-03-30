@@ -1,4 +1,12 @@
+$slider-length: 6rem;
+$slider-thumb-radius: 3rem;
+$slider-bg: #076;
+$thumb-bg: #277;
+$shadow-color1: #233;
+$shadow-color2: #244;
+
 .button-parent {
+    margin: 6rem 0;
     .basic {
         display: block;
         width: 12rem;
@@ -12,5 +20,52 @@
             background-color: #333;
         }
         cursor: pointer;
+    }
+    .slider {
+        transform: rotate(-90deg);
+        -webkit-appearance: none;
+        background: $slider-bg;
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+        &:focus {
+            outline: none;
+        }
+        &::-ms-track {
+            width: $slider-length;
+            cursor: pointer;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 1px solid $shadow-color1;
+            height: $slider-thumb-radius;
+            width: $slider-thumb-radius;
+            border-radius: 2rem;
+            background: $thumb-bg;
+            cursor: pointer;
+            margin-top: -1rem; 
+            box-shadow: 1px 1px 1px $shadow-color1, 0px 0px 1px $shadow-color2;
+        }
+        &::-moz-range-thumb {
+          box-shadow: 1px 1px 1px $shadow-color1, 0px 0px 1px $shadow-color2;
+          border: 1px solid $shadow-color1;
+          height: $slider-thumb-radius;
+          width: $slider-thumb-radius;
+          border-radius: 3px;
+          background: $thumb-bg;
+          cursor: pointer;
+        }
+        &::-ms-thumb {
+          box-shadow: 1px 1px 1px $shadow-color1, 0px 0px 1px $shadow-color2;
+          border: 1px solid $shadow-color1;
+          height: $slider-thumb-radius;
+          width: $slider-thumb-radius;
+          border-radius: 3px;
+          background: $thumb-bg;
+          cursor: pointer;
+        }
     }
 }

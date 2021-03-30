@@ -5,7 +5,7 @@
     [app.helpers.parse :refer [parse-spaces count-code]]
     [app.helpers.interop :refer [get-node]]
     [app.component.bar :refer [morse-code-bar]]
-    [app.component.button :refer [default-btn]]
+    [app.component.button :refer [slider-btn default-btn render-btn]]
   ))
 
 
@@ -14,9 +14,9 @@
     [:h3 (:note spec)]
     [morse-code-bar chal-code spec]
     [:hr]
-    [default-btn]
+    [render-btn]
     [morse-code-bar log-code (assoc spec :id "log-bar")]
-    ])
+  ])
 
 
 (defn render-victory [spec chal-code log-code]
