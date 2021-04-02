@@ -10,6 +10,7 @@
             [app.helpers.parse]
             [app.reg.all]
             [app.component.page.learn.lesson1 :as lesson1]
+            [app.component.page.learn.lesson2 :as lesson2]
             [app.component.page.device :as device]
             [app.component.root :as root]))
 
@@ -17,8 +18,8 @@
 (def routes
   [
     ["/" {:name ::index :view root/root}] 
-    ["/learn/lesson1" {:name ::lesson1 
-                       :view lesson1/page}]
+    ["/learn/lesson1" {:name ::lesson1 :view lesson1/page}]
+    ["/learn/lesson2" {:name ::lesson2 :view lesson2/page}]
     ["/device" {:name ::device
                 :view device/page}]
   ])
