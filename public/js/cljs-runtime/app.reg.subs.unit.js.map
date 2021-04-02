@@ -1,1 +1,0 @@
-{"version":3,"sources":["app/reg/subs/unit.cljs"],"mappings":";AAIA,AAAA,AAACA,AAAc,AAAKC,AAAGC;AAAR,AAAW,AAAA,AAACC,AAAIF","names":["re_frame.core.reg_sub","db","_","cljs.core.get"],"sourcesContent":["(ns app.reg.subs.unit\n  (:require\n    [re-frame.core :refer [reg-sub]]))\n\n(reg-sub :unit (fn [db _] (get db :unit)))\n\n\n"]}

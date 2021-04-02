@@ -1,1 +1,0 @@
-{"version":3,"sources":["app/views/timebar.cljs"],"mappings":";AAEA,AAAA,AAAMA,AAASC;AAAf,AAAA,AAAA,AAAA","names":["app.views.timebar/timebar","timelog"],"sourcesContent":["(ns app.views.timebar)\n\n(defn timebar [timelog]\n  [:div \"TIMMMME\"])\n"]}
