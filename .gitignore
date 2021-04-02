@@ -3,6 +3,8 @@ node_modules/
 /target
 /checkouts
 /src/gen
+/node_modules
+/public/js
 
 pom.xml
 pom.xml.asc
