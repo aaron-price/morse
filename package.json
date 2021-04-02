@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "highlight.js": "9.18.1",
+    "is-mobile": "^3.0.0",
     "modern-normalize": "^1.0.0",
-    "rangeslider.js": "^2.3.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-highlight.js": "1.0.7",

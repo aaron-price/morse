@@ -10,6 +10,7 @@
             [app.helpers.parse]
             [app.reg.all]
             [app.component.page.learn.lesson1 :as lesson1]
+            [app.component.page.device :as device]
             [app.component.root :as root]))
 
 
@@ -18,12 +19,17 @@
     ["/" {:name ::index :view root/root}] 
     ["/learn/lesson1" {:name ::lesson1 
                        :view lesson1/page}]
+    ["/device" {:name ::device
+                :view device/page}]
   ])
 
 (def router (ri/router routes))
 
 (defn init []
   (let [path (.. js/window -location -pathname)
+        path (cond
+               (.. js/window is_mobile) "/device"
+               :else path)
         route (ri/match-by-path router path)
         view (get-in route [:data :view])
         node (get-node "root")]

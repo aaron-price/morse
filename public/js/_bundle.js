@@ -725,6 +725,52 @@ module.exports = function cssWithMappingToString(item) {
 
 /***/ }),
 
+/***/ "./node_modules/is-mobile/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/is-mobile/index.js ***!
+  \*****************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = isMobile
+module.exports.isMobile = isMobile
+module.exports.default = isMobile
+
+const mobileRE = /(android|bb\d+|meego).+mobile|armv7l|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series[46]0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i
+
+const tabletRE = /android|ipad|playbook|silk/i
+
+function isMobile (opts) {
+  if (!opts) opts = {}
+  let ua = opts.ua
+  if (!ua && typeof navigator !== 'undefined') ua = navigator.userAgent
+  if (ua && ua.headers && typeof ua.headers['user-agent'] === 'string') {
+    ua = ua.headers['user-agent']
+  }
+  if (typeof ua !== 'string') return false
+
+  let result = mobileRE.test(ua) || (!!opts.tablet && tabletRE.test(ua))
+
+  if (
+    !result &&
+    opts.tablet &&
+    opts.featureDetect &&
+    navigator &&
+    navigator.maxTouchPoints > 1 &&
+    ua.indexOf('Macintosh') !== -1 &&
+    ua.indexOf('Safari') !== -1
+  ) {
+    result = true
+  }
+
+  return result
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/standardized-audio-context/build/es2019/constants.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/standardized-audio-context/build/es2019/constants.js ***!
@@ -45575,6 +45621,9 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/esm/index.js");
 /* harmony import */ var _css_index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/index.scss */ "./css/index.scss");
+/* harmony import */ var is_mobile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! is-mobile */ "./node_modules/is-mobile/index.js");
+/* harmony import */ var is_mobile__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(is_mobile__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -45601,6 +45650,10 @@ window.play_dah = (delay_units, unit_ms) => {
     const duration = 3 * unit
     const start =  tone__WEBPACK_IMPORTED_MODULE_0__.now() + (delay_units * unit)
     synth.triggerAttackRelease("C4", duration, start)
+}
+
+window.is_mobile = () => {
+    return is_mobile__WEBPACK_IMPORTED_MODULE_2___default()()
 }
 
 })();

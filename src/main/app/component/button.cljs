@@ -16,19 +16,10 @@
              :min "0"
              :max "1"
              :step "1"
-             :on-change #(handle-slide (-> % 
-                                           .-target
-                                           .-value
-                                           int))
-             }]])
-;  [:div.button-parent "Drag up and down"
-;    [:input.slider {:type "range" 
-;             :min "0" :max "1" :step "1"
-;             :on-change #(handle-slide (-> % 
-;                                           .-target 
-;                                           .-value 
-;                                           int))}]]
-;)
+             :on-change 
+               #(handle-slide (-> % .-target .-value int))
+            }]])
+
 
 (defn default-btn []
   [:div.button-parent "Tap Below"
