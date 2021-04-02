@@ -51,7 +51,7 @@
   {:log []
    :unit 200
    :score 0
-   :btn-type :slider
+   :btn-type :click
    :challenge {:text "" :curr-code [] :state :waiting :index 0}
    :input-text ""
    :ticker ticker})
