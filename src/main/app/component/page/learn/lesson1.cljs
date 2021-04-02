@@ -8,7 +8,7 @@
 (defn page []
   [:div
     [:h2 "Lesson 1"]
-    [reset-log]
+;    [reset-log]
     [wpm-controller]
     [challenge-master
       [{:plain "A ET E T ATE AET TEA" 
