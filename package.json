@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "webpack --mode development -w"
+    "start": "webpack --mode development -w",
+    "release": "webpack --mode production"
   },
   "devDependencies": {
     "css-loader": "^5.2.0",
