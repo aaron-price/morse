@@ -5,18 +5,18 @@
 (def spec1 {:plain "A" :hide-plain? true})
 (def spec2 {:code ["."]})
 
-(deftest normalize-specs
-  (is (= (c/normalize-specs [spec1 spec2])
-         [
-          {:plain "A" :hide-plain? true 
-           :hide-log-plain? false :hide-code? false 
-           :hide-log-code? false :note ""
-           :wpm nil :code ["." "-"]}
-          {:plain "E" :hide-plain? false :note ""
-           :hide-log-plain? false :hide-log-code? false
-           :hide-code? false :wpm nil :code ["."]}
-         ])))
-
+;(deftest normalize-specs
+;  (is (= (c/normalize-specs [spec1 spec2])
+;         [
+;          {:plain "A" :hide-plain? true 
+;           :hide-log-plain? false :hide-code? false 
+;           :hide-log-code? false :note ""
+;           :wpm nil :code ["." "-"]}
+;          {:plain "E" :hide-plain? false :note ""
+;           :hide-log-plain? false :hide-log-code? false
+;           :hide-code? false :wpm nil :code ["."]}
+;         ])))
+;
 (def dbc1 {:index 0 
            :curr-code ["."] 
            :state :running

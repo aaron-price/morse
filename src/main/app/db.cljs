@@ -32,25 +32,34 @@
    "X" ["-" "." "." "-"]
    "Y" ["-" "." "-" "-"]
    "Z" ["-" "-" "." "."]
+   "1" ["." "-" "-" "-" "-"]
+   "2" ["." "." "-" "-" "-"]
+   "3" ["." "." "." "-" "-"]
+   "4" ["." "." "." "." "-"]
+   "5" ["." "." "." "." "."]
+   "6" ["-" "." "." "." "."]
+   "7" ["-" "-" "." "." "."]
+   "8" ["-" "-" "-" "." "."]
+   "9" ["-" "-" "-" "-" "."]
+   "0" ["-" "-" "-" "-" "-"]
   })
 
-; @TODO deprecated! Remove when safe.
-(def sym-chart
-  (reduce
-    (fn [acc [k v]]
-      (match k
-             " " (assoc acc k [:space])
-             :else (assoc acc k (vec (map keyword v)))))
-    {}
-    chart))
+(def groups [
+  #{" " "A" "T" "E"} #{"N" "M"} #{"I"} #{"O" "S"} #{"D" "G"}
+  #{"K" "R"} #{"S" "U"} #{"W"} #{"B"} #{"C"} #{"F"} #{"H"}
+  #{"J"} #{"L"} #{"P" "Q"} #{"V" "X"} #{"Y" "Z"} #{"1" "2"}
+  #{"3" "4"} #{"5" "6"} #{"7" "8"} #{"9" "0"}])
 
 (def ticker {:time (.now js/Date)
              :count 0})
 
 (def default_db 
   {:log []
-   :unit 200
+   :unit 100
    :score 0
+   :whitelistable-groups groups
+   :whitelistable-index 0
+   :whitelist #{" " "A" "E" "T"}
    :btn-type :click
    :challenge {:text "" :curr-code [] :state :waiting :index 0}
    :input-text ""

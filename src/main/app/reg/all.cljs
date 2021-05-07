@@ -9,6 +9,7 @@
     [app.reg.events.tap]
     [app.reg.events.tick]
     [app.reg.events.text-input]
+    [app.reg.events.whitelist]
     [app.reg.events.wpm]
 
     [app.reg.subs.btn-type]
@@ -18,4 +19,5 @@
     [app.reg.subs.text-output]
     [app.reg.subs.unit]
     [app.reg.subs.ticker]
+    [app.reg.subs.whitelist]
   ))

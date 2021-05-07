@@ -3,6 +3,7 @@
     [app.component.wpm-controller :refer [wpm-controller]]
     [app.component.challenge :refer [challenge-master]]
     [app.component.button :refer [reset-log]]
+    [app.challenges]
   ))
 
 (defn page []
